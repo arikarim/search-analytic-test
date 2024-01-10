@@ -1,0 +1,379 @@
+<header>
+  <div class="inner_header-faq">
+    <h1>Search for Articles</h1>
+    <form autocomplete="off" action="javascript:void(0)">
+      <div class="wrapper-search">
+        <input
+          type="text"
+          name="search_p"
+          placeholder="What are you looking for?"
+          id="search_p"
+          aria-label="Search field"
+        />
+        <button class="btn-submit" type="submit" aria-label="Search">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="arcs"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+      </div>
+    </form>
+
+    <section>
+      <div style="display: flex;align-items: center;">
+
+        <svg style="color: orangered;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trending-up"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+        <h2 style="padding: 10px;">Trending </h2>
+      </div>
+
+        <ul class="list-group list-group-flush">
+        <%- @search_queries.map do |key, val| %>
+
+          <li class="list-group-item my-1" style="border-radius: 10px;padding: 10px;">
+            <div style="display: flex;justify-content: space-between;">
+              <span>
+                <%= key %>
+              </span>
+              <span><%= val %></span>
+            </div>
+          </li>
+
+          <% end %>
+        </ul>
+    </section>
+
+  </div>
+</header>
+
+
+
+<style>
+  body {
+  line-height: 1.5;
+  min-height: 100vh;
+
+  background-color: var(--color-grey);
+  overflow-x: hidden;
+}
+
+.highlight {
+    background-color: yellow;
+}
+.category {margin:3em 0;}
+
+.reset {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background-color:lighten(#EDE04D, 15%);
+  padding:0.85em 1.25em;
+  border-radius:30px;
+
+  font-size:1.1em;
+  &__button {
+    padding:0.85em 1.25em;
+    background-color:darken(#EDE04D, 20%);
+    color:#fff;
+    font-weight:bold;
+    border-radius:30px;
+  }
+}
+
+a {
+  text-decoration: none;
+  position: relative;
+}
+
+html {
+  font-family: var(--body-font);
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  margin: 0;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+pre {
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: pre-wrap;
+  /* Since CSS 2.1 */
+  white-space: -moz-pre-wrap;
+  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;
+  /* Opera 4-6 */
+  white-space: -o-pre-wrap;
+  /* Opera 7 */
+  word-wrap: break-word;
+  /* Internet Explorer 5.5+ */
+  user-select: all;
+  -webkit-user-select: all;
+  -moz-user-select: all;
+  -ms-user-select: all;
+}
+
+button {
+  cursor: pointer;
+  box-shadow: none;
+  border: none;
+}
+
+code {
+  font-family: "Source Code Pro", monospace;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #ccc;
+}
+
+pre {
+  margin: 1rem 0;
+  background-color: #ccc;
+  padding: 1.5rem;
+}
+
+button.btn-submit {
+  padding: 1.15rem 1.95rem;
+  font-size: 1.05rem;
+  font-family: var(--body-color);
+  font-weight: bold;
+
+  background: var(--primary-color-dark);
+  border: 2px solid var(--primary-color-md-dark);
+  color: var(--color-white);
+
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+}
+
+.container_list {
+  position: absolute;
+  z-index: 9999;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  width: calc(100% - 85px);
+  height: auto;
+
+  background-color: var(--secondary-color);
+  box-shadow: var(--box-shadow-md);
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  overflow: hidden;
+
+  ul {
+    li {
+      font-size: 1rem;
+      cursor: pointer;
+      display: block;
+      padding: 0.85rem 1.25rem;
+      color: var(--secondary-color-light);
+
+      & + li {
+        border-top: 1px solid rgba(255, 255, 255, 0.219);
+      }
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.45);
+      }
+    }
+  }
+}
+
+header {
+  background-color: var(--primary-color);
+  padding: 4.5rem 4rem;
+  font-size: 1.35rem;
+  min-height: 70vh;
+
+
+  @media (max-width:960px) {
+    padding: 2rem 2rem;
+    font-size: 1rem;
+  }
+
+  .inner_header-faq {
+    margin: 0 auto;
+    max-width: 950px;
+
+    h1 {
+      font-weight: 900;
+      font-family: var(--body-font-heading);
+      color: var(--secondary-color);
+
+      @media (max-width: 460px) {
+        font-size: 1.6rem;
+      }
+    }
+
+    .wrapper-search {
+      position: relative;
+      margin: 1.5rem 0;
+      display: flex;
+      align-items: center;
+
+      input[type="text"] {
+        flex: 1;
+        width: 100%;
+        padding: 1.4rem 1.75rem;
+        border: 1px solid transparent;
+        font-family: var(--body-font);
+        font-size: 1.15rem;
+
+        -webkit-border-radius: 35px;
+        -moz-border-radius: 35px;
+        border-radius: 35px;
+
+        overflow: hidden;
+
+        box-shadow: var(--box-shadow-lg);
+
+        @media (max-width: 460px) {
+          font-size: 1rem;
+        }
+      }
+
+      button {
+        background-color: var(--secondary-color);
+        color: var(--color-white);
+        padding: 1rem 1.15rem;
+        margin-left: 1.25rem;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+
+        box-shadow: var(--box-shadow-lg);
+
+        @media (max-width: 460px) {
+          padding: 0.75rem 1.2rem;
+          svg {
+            width: 24px;
+          }
+        }
+      }
+    }
+
+    span.alternative-choice {
+      display: block;
+      font-size: 1rem;
+      padding: 1.5rem 0;
+    }
+
+    .inner_faqs-category {
+      margin-top: 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 1.5rem;
+
+      @media (max-width: 1024px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      & > .grid-category {
+        text-align: center;
+        padding: 2.25rem 1.8rem;
+
+        background-color: var(--color-white);
+        box-shadow: var(--box-shadow-md);
+        -webkit-border-radius: 13px;
+        -moz-border-radius: 13px;
+        border-radius: 13px;
+        @media (max-width: 960px) {
+          padding: 1.85rem 1.45rem;
+        }
+
+        &:focus {
+          outline: 3px solid var(--secondary-color);
+        }
+
+        svg {
+          color: var(--primary-color-dark);
+        }
+
+        h2 {
+          font-weight: bold;
+          font-size: 1.35rem;
+
+          @media (max-width: 460px) {
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+:root {
+  --color-white: hsl(0, 0%, 100%);
+  --color-grey: hsl(0, 0%, 95%);
+  --color-black: hsl(0, 0%, 10%);
+  --color-black-md: hsl(0, 0%, 40%);
+  --color-black-lg: hsl(0, 0%, 80%);
+
+  --primary-color-dark: hsl(15, 70%, 65%);
+  --primary-color-md-dark: hsl(15, 50%, 80%);
+  --primary-color: hsl(15, 100%, 90%);
+
+  --secondary-color: hsl(227, 40%, 25%);
+  --secondary-color-light: hsl(227, 40%, 95%);
+
+  --body-font: "Karla", sans-serif;
+  --body-font-heading: "Playfair Display", serif;
+  --body-font-code: "Source Code Pro", monospace;
+
+  --body-color: hsl(0, 0%, 25%);
+  --body-title: hsl(0, 0%, 10%);
+
+  --box-shadow-md: 0 4px 8px 0 rgba(0, 0, 0, 0.12),
+    0 2px 4px 0 rgba(0, 0, 0, 0.08);
+  --box-shadow-lg: 0 4px 8px 0 rgba(0, 0, 0, 0.04),
+    0 2px 4px 0 rgba(0, 0, 0, 0.04);
+}
+
+
+
+</style>
